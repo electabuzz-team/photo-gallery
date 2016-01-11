@@ -45,7 +45,7 @@ The following **optional** functionality is complete:
 Here's a walkthrough of implemented user stories:
 [Walkthrough]
 
-## Wireframe
+## Wireframes
 
 Landing page:
 
