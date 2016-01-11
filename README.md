@@ -40,10 +40,40 @@ The following **optional** functionality is complete:
 * [ ] Everyone can view list of licence photos
 * [ ] Everyone can purchase photos with credit card
 
-## Video Walkthrough 
+## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 [Walkthrough]
+
+## Wireframe
+
+Landing page:
+
+![Video Walkthrough](https://raw.githubusercontent.com/electabuzz-team/photo-gallery/master/docs/wireframe/landing_page.png)
+
+Gallery view:
+
+![Video Walkthrough](https://raw.githubusercontent.com/electabuzz-team/photo-gallery/master/docs/wireframe/gallery_page.png)
+
+Maps view:
+
+![Video Walkthrough](https://raw.githubusercontent.com/electabuzz-team/photo-gallery/master/docs/wireframe/location_based.png)
+
+Upload new photo:
+
+![Video Walkthrough](https://raw.githubusercontent.com/electabuzz-team/photo-gallery/master/docs/wireframe/upload_photo.png)
+
+User profile menu:
+
+![Video Walkthrough](https://raw.githubusercontent.com/electabuzz-team/photo-gallery/master/docs/wireframe/user_loged_in.png)
+
+Update photo info:
+
+![Video Walkthrough](https://raw.githubusercontent.com/electabuzz-team/photo-gallery/master/docs/wireframe/edit_photo.png)
+
+Search photo:
+
+![Video Walkthrough](https://raw.githubusercontent.com/electabuzz-team/photo-gallery/master/docs/wireframe/search.png)
 
 
 ## License
