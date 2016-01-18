@@ -10,8 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require bootstrap
-//= require jquery_ujs
-//= require turbolinks
+//= require lib/modernizr-2.6.2.min
+//= require lib/jquery-1.10.2
+//= require lib/bootstrap
+//= require lib/jquery.magnific-popup
+//= require lib/owl.carousel
+//= require lib/script
+//= require lib/stickUp.min
+//= require lib/wow.min
+//= require lib/classie
+//= require lib/uiMorphingButton_inflow
 //= require_tree .
+

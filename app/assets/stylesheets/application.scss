@@ -1,1 +1,11 @@
-@import "bootstrap";
+$fa-font-path: '.';
+
+@import "lib/bootstrap";
+@import "lib/font-awesome/font-awesome";
+@import "lib/general";
+@import "lib/custom";
+@import "lib/owl.carousel";
+@import "lib/owl.theme";
+@import "lib/style";
+@import "lib/animate";
+@import "lib/magnific-popup";
