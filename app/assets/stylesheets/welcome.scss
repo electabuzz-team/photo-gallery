@@ -1,3 +1,21 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.notification {
+  position: absolute;
+  width: 400px;
+  right: 10px;
+  top: 10px;
+  text-align: right;
+  display: none;
+  .notice, .alert {
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF;
+  }
+  .notice {
+    background: #9B9B9B;
+    border: 1px solid #4A4A4A;
+  }
+  .alert {
+    background: #FF6359;
+    border: 1px solid #FE2851;
+  }
+}

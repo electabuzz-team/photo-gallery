@@ -6,12 +6,12 @@
 <!-- FullScreen -->
 <div class="intro-header">
     <div class="col-xs-12 text-center abcen1">
-        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Flatfy</h1>
-        <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Clean & minimal Theme</h3>
+        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Saigon Photos</h1>
+        <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Simple & best place for photographers</h3>
         <ul class="list-inline intro-social-buttons">
-            <li><a href="https://twitter.com/galantiandrea" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Twitter</span></a>
+            <li><a href="<%= new_user_session_path %>" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Login</span></a>
             </li>
-            <li id="download" ><a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Free Download</span></a>
+            <li><a href="<%= photos_path %>" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Go to Gallery</span></a>
             </li>
         </ul>
     </div>
@@ -33,16 +33,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#home">Flatfy</a>
+            <a class="navbar-brand" href="#home">Saigon Photos</a>
         </div>
 
         <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
             <ul class="nav navbar-nav">
 
                 <li class="menuItem"><a href="#whatis">What is?</a></li>
-                <li class="menuItem"><a href="#useit">Use It</a></li>
+                <!-- <li class="menuItem"><a href="#useit">Use It</a></li>
                 <li class="menuItem"><a href="#screen">Screenshot</a></li>
-                <li class="menuItem"><a href="#credits">Credits</a></li>
+                <li class="menuItem"><a href="#credits">Credits</a></li> -->
+                <li class="menuItem"><a href="<%= new_user_registration_path %>">Registration</a></li>
                 <li class="menuItem"><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -56,35 +57,31 @@
 
         <div class="col-md-6 col-md-offset-3 text-center wrap_title">
             <h2>What is?</h2>
-            <p class="lead" style="margin-top:0">A special thanks to Death.</p>
+            <p class="lead" style="margin-top:0">A special thanks to CoderSchool.</p>
 
         </div>
 
         <div class="row">
 
             <div class="col-sm-4 wow fadeInDown text-center">
-              <img class="rotate" src="assets/icon/tweet.svg" alt="Generic placeholder image">
-              <h3>Follow Me</h3>
-              <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-
-              <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
-
-            <div class="col-sm-4 wow fadeInDown text-center">
               <img  class="rotate" src="assets/icon/picture.svg" alt="Generic placeholder image">
                <h3>Gallery</h3>
                <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-               <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
+            </div>
+
+            <div class="col-sm-4 wow fadeInDown text-center">
+              <img  class="rotate" src="assets/icon/map.svg" alt="Generic placeholder image">
+               <h3>Location Based</h3>
+               <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+            </div>
 
             <div class="col-sm-4 wow fadeInDown text-center">
               <img  class="rotate" src="assets/icon/retina.svg" alt="Generic placeholder image">
-               <h3>Retina</h3>
+               <h3>High Quality</h3>
                 <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-              <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
+            </div>
 
-        </div><!-- /.row -->
+        </div>
 
         <div class="row tworow">
 
@@ -92,29 +89,26 @@
               <img class="rotate" src="assets/icon/laptop.svg" alt="Generic placeholder image">
               <h3>Responsive</h3>
               <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-             <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
-
-            <div class="col-sm-4 wow fadeInDown text-center">
-              <img  class="rotate" src="assets/icon/map.svg" alt="Generic placeholder image">
-               <h3>Google</h3>
-               <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-               <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
+            </div>
 
             <div class="col-sm-4 wow fadeInDown text-center">
               <img  class="rotate" src="assets/icon/browser.svg" alt="Generic placeholder image">
-               <h3>Bootstrap</h3>
+               <h3>Anonymous</h3>
              <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-              <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
+            </div>
 
-        </div><!-- /.row -->
+            <div class="col-sm-4 wow fadeInDown text-center">
+              <img class="rotate" src="assets/icon/tweet.svg" alt="Generic placeholder image">
+              <h3>Sharing</h3>
+              <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+            </div>
+
+        </div>
     </div>
 </div>
 
 <!-- Use it -->
-<div id ="useit" class="content-section-a">
+<!-- <div id ="useit" class="content-section-a">
 
     <div class="container">
 
@@ -139,7 +133,6 @@
             </div>
         </div>
     </div>
-    <!-- /.container -->
 </div>
 
 <div class="content-section-b">
@@ -208,10 +201,10 @@
         </div>
     </div>
 
-</div>
+</div> -->
 
 <!-- Screenshot -->
-<div id="screen" class="content-section-b">
+<!-- div id="screen" class="content-section-b">
     <div class="container">
       <div class="row" >
          <div class="col-md-6 col-md-offset-3 text-center wrap_title ">
@@ -289,10 +282,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Credits -->
-<div id="credits" class="content-section-a">
+<!-- <div id="credits" class="content-section-a">
     <div class="container">
         <div class="row">
 
@@ -350,10 +343,10 @@
           </div>
       </div>
     </div>
-</div>
+</div> -->
 
 <!-- Banner Download -->
-<div id="downloadlink" class="banner">
+<!-- <div id="downloadlink" class="banner">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center wrap_title">
@@ -363,7 +356,7 @@
          </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Contact -->
 <div id="contact" class="content-section-a">
@@ -372,7 +365,7 @@
 
         <div class="col-md-6 col-md-offset-3 text-center wrap_title">
             <h2>Contact Us</h2>
-            <p class="lead" style="margin-top:0">A special thanks to Death.</p>
+            <p class="lead" style="margin-top:0">A special thanks to CoderSchool.</p>
         </div>
 
         <form role="form" action="" method="post" >
@@ -409,8 +402,8 @@
             <div class="col-md-5 col-md-push-1 address">
                 <address>
                 <h3>Office Location</h3>
-                <p class="lead"><a href="https://www.google.com/maps/preview?ie=UTF-8&q=The+Pentagon&fb=1&gl=us&hq=1400+Defense+Pentagon+Washington,+DC+20301-1400&cid=12647181945379443503&ei=qmYfU4H8LoL2oATa0IHIBg&ved=0CKwBEPwSMAo&safe=on">The Pentagon<br>
-                Washington, DC 20301</a><br>
+                <p class="lead"><a href="https://www.google.com/maps/place/Vincom+Center/@10.7778563,106.6997892,17z/data=!4m5!1m2!2m1!1sVincom+Center!3m1!1s0x31752f47b987d689:0x20da820de9c058e0">Vincom Center Level 18<br>
+                72 Le Thanh Ton, Ben Nghe, HCMC, Viet Nam</a><br>
                 Phone: XXX-XXX-XXXX<br>
                 Fax: XXX-XXX-YYYY</p>
                 </address>
@@ -433,36 +426,23 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h3 class="footer-title">Follow Me!</h3>
-        <p>Vuoi ricevere news su altri template?<br/>
-          Visita Andrea Galanti.it e vedrai tutte le news riguardanti nuovi Theme!<br/>
-          Go to: <a  href="http://andreagalanti.it" target="_blank">andreagalanti.it</a>
-        </p>
+        <h3 class="footer-title">Follow Us!</h3>
 
-        <!-- LICENSE -->
-        <a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"
-       property="dc:title">Flatfy Theme </a> by
-       <a rel="dc:creator" href="http://www.andreagalanti.it"
-       property="cc:attributionName">Andrea Galanti</a>
-       is licensed to the public under
-       <BR>the <a rel="license"
-       href="http://creativecommons.org/licenses/by-nc/3.0/it/deed.it">Creative
-       Commons Attribution 3.0 License - NOT COMMERCIAL</a>.
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium earum obcaecati rerum, minus, fuga dolores possimus odio quidem sequi quibusdam vitae mollitia porro cupiditate veniam nihil labore eum! Sed, necessitatibus?</p>
 
-
-      </div> <!-- /col-xs-7 -->
+        <p>Veritatis dolorem accusamus cum recusandae culpa nostrum sapiente, neque provident nisi. Omnis deserunt quas, provident obcaecati repellat autem unde mollitia distinctio maxime quam minus, ipsam possimus. Unde vel voluptatum, natus.</p>
+      </div>
 
       <div class="col-md-5">
         <div class="footer-banner">
-          <h3 class="footer-title">Flatfy Theme</h3>
+          <h3 class="footer-title">Saigon Photos</h3>
           <ul>
-            <li>12 Column Grid Bootstrap</li>
-            <li>Form Contact</li>
-            <li>Drag Gallery</li>
-            <li>Full Responsive</li>
-            <li>Lorem Ipsum</li>
+            <li>Thanh Dong</li>
+            <li>An Ta</li>
+            <li>Toan Vo</li>
+            <li>Nha Hoang</li>
           </ul>
-          Go to: <a href="http://andreagalanti.it/flatfy" target="_blank">andreagalanti.it/flatfy</a>
+          Find us on: <a href="#" target="_blank">hungry-nerds.vn</a>
         </div>
       </div>
     </div>
