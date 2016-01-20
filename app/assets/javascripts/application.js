@@ -20,5 +20,7 @@
 //= require lib/wow.min
 //= require lib/classie
 //= require lib/uiMorphingButton_inflow
+//= require underscore
+//= require gmaps/google
 //= require_tree .
 

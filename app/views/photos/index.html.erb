@@ -31,3 +31,30 @@
 <br>
 
 <%= link_to 'New Photo', new_photo_path %>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script>
+  markers = []
+  <% @photos.each do |photo| %>
+    markers.push({
+      "lat": <%= photo.latitude%>,
+      "lng": <%= photo.longitude%>,
+      "picture": {
+        "url": "<%= photo.photo.url(:thumb)%>",
+        "width":  32,
+        "height": 32
+      },
+      "infowindow": "<%= photo.name%>"
+    });
+  <% end%>
+  console.log(markers)
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(markers);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>

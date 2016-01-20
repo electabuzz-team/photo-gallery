@@ -27,6 +27,12 @@
     <%= f.label :storage_url %><br>
     <%= f.text_field :storage_url %>
   </div>
+  <div class="field">
+    <%= f.label :storage_url %><br>
+    <%= f.file_field :photo %>
+  </div>
+  <%= f.gmap_coordinate_picker %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

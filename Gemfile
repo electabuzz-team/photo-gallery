@@ -11,9 +11,12 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
-gem 'geokit-rails'
 
 gem 'devise'
+gem "paperclip", "~> 4.3"
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem "gmap_coordinates_picker"
 
 group :development do
   gem 'web-console', '~> 2.0'
