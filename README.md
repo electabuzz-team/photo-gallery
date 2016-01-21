@@ -6,19 +6,20 @@ Submitted by: **Electabuzz team**
 * Thanh Dong
 * Nha Hoang
 * An Ta
+* Toan Vo
 
 Time spent: **XXX** hours
 
-URL: **URL**
+URL: https://stormy-dusk-64648.herokuapp.com/
 
 ## User Stories
 
 The following **required** functionality is complete:
 
-* [ ] User can register/login/logout by username, password
+* [x] User can register/login/logout by username, password
 * [ ] User can change password/request to reset password
-* [ ] User can view photos via a map of photos
-* [ ] User can upload photos
+* [x] User can view photos via a map of photos
+* [x] User can upload photos
 * [ ] User can manage their own photos (update detail/delete/publish/hide/change location)
 * [ ] User can search for photos by photo name
 * [ ] User can search photos by location
@@ -29,7 +30,7 @@ The following **required** functionality is complete:
 * [ ] Everyone can view published photos via a gallery or a map without logging in
 * [ ] Photo should have name/location/description
 * [ ] Photo should be listed in gallery
-* [ ] Photo should be listed in a map based on its location
+* [x] Photo should be listed in a map based on its location
 
 The following **optional** functionality is complete:
 * [ ] User can comment on photos
