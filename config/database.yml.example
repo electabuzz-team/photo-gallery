@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: photo-gallery_development
+
+test:
+  <<: *default
+  database: photo-gallery_test
+
+production:
+  <<: *default
+  database: photo-gallery_production
+  username: pg
+  password: <%= ENV['PG_DATABASE_PASSWORD'] %>
