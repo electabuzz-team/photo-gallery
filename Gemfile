@@ -17,6 +17,7 @@ gem 'paperclip', '~> 4.3'
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'gmap_coordinates_picker'
+gem 'geokit-rails'
 
 group :development do
   # gem 'byebug'
