@@ -11,15 +11,17 @@
 // about supported directives.
 //
 //= require lib/modernizr-2.6.2.min
-//= require lib/jquery-1.10.2
+//= require jquery
+//= require jquery_ujs
 //= require lib/bootstrap
 //= require lib/jquery.magnific-popup
 //= require lib/owl.carousel
 //= require lib/script
-//= require lib/stickUp.min
 //= require lib/wow.min
 //= require lib/classie
 //= require lib/uiMorphingButton_inflow
+//= require lib/unitegallery.min
+//= require lib/ug-theme-tiles
 //= require underscore
 //= require gmaps/google
 //= require_tree .

@@ -1,25 +1,10 @@
-<p id="notice"><%= notice %></p>
+<div class="container image-show">
+    <div class="image-info">
+        <blockquote class="description">
+            <p><%= @photo.description %></p>
+             <footer><%= @photo.name %></footer>
+        </blockquote>
+    </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @photo.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @photo.description %>
-</p>
-
-<p>
-  <strong>Published:</strong>
-  <%= @photo.published %>
-</p>
-
-<p>
-  <strong>Storage url:</strong>
-  <%= @photo.storage_url %>
-</p>
-<%= image_tag @photo.photo.url(:medium) %>
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+    <%= image_tag @photo.photo.url %>
+</div>
