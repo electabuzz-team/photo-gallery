@@ -19,6 +19,11 @@ gem 'underscore-rails'
 gem 'gmap_coordinates_picker'
 
 group :development do
+  # gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
