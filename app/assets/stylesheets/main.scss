@@ -1,0 +1,67 @@
+.navbar-default {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: rgb(248, 248, 248);
+}
+
+.navbar-default .navbar-brand {
+  color: rgb(248, 248, 248);
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#preloader {
+  background-color: rgb(51, 51, 51);
+}
+
+.form-control {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+}
+
+form {
+  &.new_photo, &.edit_photo, &.auth-form {
+    margin-top: 82px;
+    margin-bottom: 20px;
+    color: #fff;
+
+    a {
+      color: #1abc9c;
+      font-size: 14px;
+      display: block;
+    }
+  }
+}
+
+.auth-form {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.gmap_coordinate_picker_container {
+  margin-bottom: 20px;
+}
+
+.image-show {
+  position: relative;
+  img {
+    width: 100%;
+  }
+  .image-info {
+    position: absolute;
+    bottom: 20px;
+    left: 36px;
+    color: #fff;
+    blockquote {
+      margin-bottom: 0;
+    }
+    footer {
+      background-color: transparent;
+    }
+  }
+}

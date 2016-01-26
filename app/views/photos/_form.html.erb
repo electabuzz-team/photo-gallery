@@ -11,25 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: 'form-control', rows: '4' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :published %><br>
     <%= f.check_box :published %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :storage_url %><br>
     <%= f.file_field :photo %>
   </div>
   <%= f.gmap_coordinate_picker :zoom_level => 15, :default_coordinates => [10.780260, 106.698522]%>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit defined?(submit) ? submit : 'Upload', class: 'btn btn-primary' %>
   </div>
 <% end %>
