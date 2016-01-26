@@ -2,7 +2,7 @@
   <div id="gallery" style="display: none;">
     <% @photos.each do |photo| %>
       <a href="#">
-        <img alt="<%= photo.name %>" src="<%= photo.photo.url(:medium) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
+        <img alt="<%= photo.name %>" src="<%= photo.photo.url() %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
       </a>
     <% end %>
   </div>
