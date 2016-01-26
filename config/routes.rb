@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+	get 'search' => 'photos#search'
+	post 'search_result' => 'photos#search_photo'
 end
