@@ -43,6 +43,7 @@
 
     function showSearch() {
       $search.addClass('open');
+      $search.find('.form-control').first().focus();
       google.maps.event.trigger(gMapObj, 'resize');
     }
 
