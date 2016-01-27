@@ -4,6 +4,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
+    @map = params[:map] || false
     @photos = Photo.where(published: true)
   end
 
@@ -13,7 +14,7 @@ class PhotosController < ApplicationController
   end
 
   def search_photo
-    if params[:name]
+    if params[:name] && !params[:name].empty?
       @photos = Photo.where("name LIKE ?","%#{params[:name]}%").where(published: true)
     elsif params[:longitude] && params[:latitude]
       bounds = Geokit::Bounds.from_point_and_radius([ params[:latitude], params[:longitude]], 0.5)

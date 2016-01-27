@@ -1,0 +1,51 @@
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+<div class="container">
+  <div id="gallery" style="display: none;">
+    <% @photos.each do |photo| %>
+        <a href="#">
+          <img alt="<%= photo.name %>" src="<%= photo.photo.url(:medium) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
+        </a>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    this.galery = $('#gallery').unitegallery({
+      gallery_theme: 'tiles',
+      tiles_type: 'nested'
+    });
+  });
+</script>
+
+<script>
+  markers = []
+  <% @photos.each do |photo| %>
+  markers.push({
+    "id": <%= photo.id%>,
+    "lat": <%= photo.latitude%>,
+    "lng": <%= photo.longitude%>,
+    "picture": {
+      "url": "https://dl.dropboxusercontent.com/1/view/htlrc29bk9pxllu/Apps/electabuzz-photo/camera_thumb.png",
+      "width":  20,
+      "height": 20
+    },
+    "infowindow": "<%= photo.name%>"
+  });
+  <% end%>
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    real_markers = handler.addMarkers(markers);
+    handler.bounds.extendWith(real_markers);
+    handler.fitMapToBounds();
+
+    real_markers.forEach(function(m, index){
+      google.maps.event.addListener(m.getServiceObject(), 'click', function(object){
+        document.galery.zoomIn(index)
+      });
+    });
+  });
+
+</script>
