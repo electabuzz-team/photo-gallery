@@ -13,7 +13,7 @@
     <%= form_tag(search_result_path, method: 'POST', class: 'search-form') do %>
       <%= render_gmap_coordinate_picker :zoom_level => 15, :default_coordinates => [10.780260, 106.698522]%>
       <div class="form-group">
-        <%= text_field_tag(:name, nil, class: 'form-control', placeholder: 'Photo name') %>
+        <%= text_field_tag(:name, nil, class: 'form-control', placeholder: 'Photo name', autofocus: 'autofocus') %>
       </div>
       <div class="actions">
         <%= submit_tag 'Search', class: 'btn btn-block btn-primary' %>

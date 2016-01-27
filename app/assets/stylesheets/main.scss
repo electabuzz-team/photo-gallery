@@ -90,7 +90,8 @@ form {
   left: 20px;
   width: calc(100% - 40px);
   height: calc(100% - 40px);
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #1abc9c;
   z-index: 9999;
   display: none;
   &.open {
@@ -112,5 +113,5 @@ form {
   background-color: rgba(0, 0, 0, 1);
   border-radius: 30px;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 9998;
 }
