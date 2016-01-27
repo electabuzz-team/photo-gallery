@@ -8,9 +8,9 @@ Submitted by: **Electabuzz team**
 * An Ta
 * Toan Vo
 
-Time spent: **XXX** hours
+Time spent: **40** hours
 
-URL: https://stormy-dusk-64648.herokuapp.com/
+URL: https://saigon-photo.herokuapp.com/
 
 ## User Stories
 
@@ -20,16 +20,16 @@ The following **required** functionality is complete:
 * [ ] User can change password/request to reset password
 * [x] User can view photos via a map of photos
 * [x] User can upload photos
-* [ ] User can manage their own photos (update detail/delete/publish/hide/change location)
-* [ ] User can search for photos by photo name
-* [ ] User can search photos by location
+* [x] User can manage their own photos (update detail/delete/publish/hide/change location)
+* [x] User can search for photos by photo name
+* [x] User can search photos by location
 * [ ] User can search photos by uploader
 * [ ] User can manage his own profile (update/change information privacy)
 * [ ] User can rate photos
 * [ ] Everyone can view profile of users (only published information)
-* [ ] Everyone can view published photos via a gallery or a map without logging in
-* [ ] Photo should have name/location/description
-* [ ] Photo should be listed in gallery
+* [x] Everyone can view published photos via a gallery or a map without logging in
+* [x] Photo should have name/location/description
+* [x] Photo should be listed in gallery
 * [x] Photo should be listed in a map based on its location
 
 The following **optional** functionality is complete:
