@@ -4,6 +4,7 @@
             <p><%= @photo.description %></p>
              <footer><%= @photo.name %></footer>
         </blockquote>
+        <a href="<%= edit_photo_path(@photo) %>" class="photo-edit-link">Edit</a>
     </div>
 
     <%= image_tag @photo.photo.url %>

@@ -57,11 +57,23 @@ form {
     bottom: 20px;
     left: 36px;
     color: #fff;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
     blockquote {
       margin-bottom: 0;
     }
     footer {
       background-color: transparent;
     }
+    .photo-edit-link {
+      color: #fff;
+      margin-top: 10px;
+      display: inline-block;
+    }
   }
+}
+
+#gallery {
+  margin-top: 82px;
+  margin-bottom: 20px;
 }
