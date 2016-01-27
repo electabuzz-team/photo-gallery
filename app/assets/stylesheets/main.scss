@@ -77,3 +77,9 @@ form {
   margin-top: 82px;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  #gallery {
+    margin-top: 20px;
+  }
+}
