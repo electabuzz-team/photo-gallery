@@ -1,0 +1,22 @@
+<div class="container">
+  <div id="gallery" style="display: none;">
+    <% @photos.each do |photo| %>
+      <a href="<%= photo_path(photo) %>">
+        <img alt="<%= photo.name %>" src="<%= photo.photo.url(:medium) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
+      </a>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $('#gallery').unitegallery({
+      gallery_theme: 'tiles',
+      tiles_type: 'nested',
+      tile_show_link_icon: true,
+      tile_link_newpage: false,
+      tiles_nested_optimal_tile_width: 400,
+      tiles_min_columns: 1
+    });
+  });
+</script>
