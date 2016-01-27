@@ -83,3 +83,34 @@ form {
     margin-top: 20px;
   }
 }
+
+.search-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: none;
+  &.open {
+    display: block;
+  }
+  .search-form {
+    margin-top: 20px;
+  }
+}
+
+.search-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
+  background: url(search.png) no-repeat center center;
+  background-size: 25px 25px;
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 9999;
+}

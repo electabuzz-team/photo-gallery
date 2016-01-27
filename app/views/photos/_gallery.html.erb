@@ -8,8 +8,25 @@
   </div>
 </div>
 
+<div class="search-container">
+  <div class="container">
+    <%= form_tag(search_result_path, method: 'POST', class: 'search-form') do %>
+      <%= render_gmap_coordinate_picker :zoom_level => 15, :default_coordinates => [10.780260, 106.698522]%>
+      <div class="form-group">
+        <%= text_field_tag(:name, nil, class: 'form-control', placeholder: 'Photo name') %>
+      </div>
+      <div class="actions">
+        <%= submit_tag 'Search', class: 'btn btn-block btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="search-toggle" data-toggle="tooltip" data-placement="left" title="Or press 'S' key"></div>
+
 <script type="text/javascript">
   $(function () {
+    // Initialize gallery
     $('#gallery').unitegallery({
       gallery_theme: 'tiles',
       tiles_type: 'nested',
@@ -20,5 +37,32 @@
       tiles_space_between_cols_mobile: 6,
       tiles_min_columns: 1
     });
+
+    // Initialize search
+    var $search = $('.search-container');
+
+    function showSearch() {
+      $search.addClass('open');
+      google.maps.event.trigger(gMapObj, 'resize');
+    }
+
+    function closeSearch() {
+      $search.removeClass('open');
+    }
+
+    $(document).on('keyup', function (event) {
+      if (event.keyCode === 83) { // press 's'
+        showSearch();
+      } else if (event.keyCode === 27) { // press 'ESC'
+        closeSearch();
+      }
+    });
+
+    $('.search-toggle').on('click', function () {
+      showSearch();
+    });
+
+    // Tooltip
+    $('[data-toggle="tooltip"]').tooltip();
   });
 </script>
