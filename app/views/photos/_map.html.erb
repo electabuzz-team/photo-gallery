@@ -1,7 +1,7 @@
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
-<div class="container">
+<div class="container" style="display: none;">
   <div id="gallery" style="display: none;">
     <% @photos.each do |photo| %>
         <a href="#">
@@ -28,7 +28,7 @@
     "lat": <%= photo.latitude%>,
     "lng": <%= photo.longitude%>,
     "picture": {
-      "url": "https://dl.dropboxusercontent.com/1/view/htlrc29bk9pxllu/Apps/electabuzz-photo/camera_thumb.png",
+      "url": "<%= Photo.find_by_name('wwww').photo.url(:thumb)%>",
       "width":  20,
       "height": 20
     },
@@ -43,7 +43,7 @@
 
     real_markers.forEach(function(m, index){
       google.maps.event.addListener(m.getServiceObject(), 'click', function(object){
-        document.galery.zoomIn(index)
+        alert('show photo number '+ index)
       });
     });
   });
