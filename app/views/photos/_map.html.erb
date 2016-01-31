@@ -1,26 +1,30 @@
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div style='width: 100%; margin-top: 82px;'>
+  <div id="map" style='width: 100%; height: 400px;'></div>
 </div>
-<div class="container" style="display: none;">
-  <div id="gallery" style="display: none;">
+<div class="container">
+  <div id="map_gallery" style="display: none;">
     <% @photos.each do |photo| %>
-        <a href="#">
-          <img alt="<%= photo.name %>" src="<%= photo.photo.url(:medium) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
+        <a href="<%= photo_path(photo) %>">
+          <img alt="<%= photo.name %>" src="<%= photo.photo.url(:thumb) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
         </a>
     <% end %>
   </div>
 </div>
 
-<script type="text/javascript">
-  $(function () {
-    this.galery = $('#gallery').unitegallery({
-      gallery_theme: 'tiles',
-      tiles_type: 'nested'
-    });
-  });
-</script>
 
-<script>
+<script type="text/javascript">
+  // Initialize gallery
+  $('#map_gallery').unitegallery({
+    gallery_theme: 'tiles',
+    tiles_type: 'nested',
+    tile_show_link_icon: true,
+    tile_link_newpage: false,
+    tiles_nested_optimal_tile_width: 400,
+    tiles_space_between_cols: 6,
+    tiles_space_between_cols_mobile: 6,
+    tiles_min_columns: 1
+  });
+
   markers = []
   <% @photos.each do |photo| %>
   markers.push({
@@ -39,12 +43,24 @@
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     real_markers = handler.addMarkers(markers);
     handler.bounds.extendWith(real_markers);
+
     handler.fitMapToBounds();
 
     real_markers.forEach(function(m, index){
       google.maps.event.addListener(m.getServiceObject(), 'click', function(object){
-        alert('show photo number '+ index)
       });
+
+
+    });
+    google.maps.event.addListener(handler.getMap(), 'click', function( event ){
+      if (handler.circle) {
+        handler.removeMarker(handler.circle)
+      }
+
+      circle = handler.addCircle({'lng': event.latLng.lng(), 'lat': event.latLng.lat(), radius: 804.67200},{ strokeColor: '#3399ff', strokeOpacity: 1, fillColor: 'transparent', draggable: true })
+      handler.circle = circle
+      handler.bounds.extendWith(circle);
+      handler.fitMapToBounds()
     });
   });
 
