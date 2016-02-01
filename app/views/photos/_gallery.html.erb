@@ -10,6 +10,7 @@
 
 <div class="search-container">
   <div class="container">
+    <i class="fa fa-times btn-close"></i>
     <%= form_tag(search_result_path, method: 'POST', class: 'search-form') do %>
       <%= render_gmap_coordinate_picker :zoom_level => 15, :default_coordinates => [10.780260, 106.698522]%>
       <div class="form-group">
@@ -58,6 +59,8 @@
         closeSearch();
       }
     });
+
+    $('.btn-close').on('click', closeSearch);
 
     $('.search-toggle').on('click', function () {
       showSearch();
