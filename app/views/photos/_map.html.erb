@@ -1,9 +1,9 @@
 <div class="container">
-  <div id="map" style='width: 100%; height: 400px; margin-bottom: 5px;'></div>
+  <div id="map" style='width: 100%; height: 400px; margin-bottom: 6px;'></div>
   <div id="map_gallery" style="display: none; margin-bottom: 20px;">
     <% @photos.each do |photo| %>
         <a href="<%= photo_path(photo) %>">
-          <img alt="<%= photo.name %>" src="<%= photo.photo.url(:thumb) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
+          <img alt="<%= photo.name %>" src="<%= photo.photo.url(:medium) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
         </a>
     <% end %>
   </div>
@@ -83,7 +83,7 @@
     function search_photo(lat, long, radius) {
       $('.loading').show();
       $.ajax({
-        url: "<%= search_result_path%>",
+        url: "<%= search_result_path %>",
         method: "POST",
         data: { longitude : long,
                 latitude: lat,
@@ -94,7 +94,7 @@
         $('#map_gallery').empty();
         photos.forEach(function (photo) {
           var photoHtml = '<a href="/photos/' + photo.id + '">' +
-            '<img alt="' + photo.name + '" src="' + photo.thumb_photo_url + '" data-image="' + photo.photo_url + '" data-description="' + photo.description + '" style="display: none" />' +
+            '<img alt="' + photo.name + '" src="' + photo.medium_photo_url + '" data-image="' + photo.photo_url + '" data-description="' + photo.description + '" style="display: none" />' +
           '</a>';
 
           $('#map_gallery').append($(photoHtml));
