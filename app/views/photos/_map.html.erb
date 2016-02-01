@@ -43,25 +43,50 @@
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     real_markers = handler.addMarkers(markers);
     handler.bounds.extendWith(real_markers);
-
     handler.fitMapToBounds();
 
-    real_markers.forEach(function(m, index){
-      google.maps.event.addListener(m.getServiceObject(), 'click', function(object){
-      });
-
-
-    });
+//    real_markers.forEach(function(m, index){
+//      google.maps.event.addListener(m.getServiceObject(), 'click', function(object){
+//      });
+//    });
     google.maps.event.addListener(handler.getMap(), 'click', function( event ){
       if (handler.circle) {
         handler.removeMarker(handler.circle)
       }
 
-      circle = handler.addCircle({'lng': event.latLng.lng(), 'lat': event.latLng.lat(), radius: 804.67200},{ strokeColor: '#3399ff', strokeOpacity: 1, fillColor: 'transparent', draggable: true })
+      circle = handler.addCircle({'lng': event.latLng.lng(), 'lat': event.latLng.lat(), radius: 804.67200},{ strokeColor: '#3399ff', strokeOpacity: 1, fillColor: 'transparent', editable: true, event: "aaaaa" })
       handler.circle = circle
+      handler.circle.getServiceObject().center_changed = function(event) {
+        search()
+      };
+      handler.circle.getServiceObject().radius_changed = function(event) {
+        search()
+      };
       handler.bounds.extendWith(circle);
       handler.fitMapToBounds()
+      search()
     });
   });
+
+    function search() {
+      lat = handler.circle.getServiceObject().center.lat();
+      lng = handler.circle.getServiceObject().center.lng();
+      radius = handler.circle.getServiceObject().radius;
+      search_photo(lat, lng, radius);
+    };
+
+    function search_photo(lat, long, radius) {
+      $.ajax({
+        url: "<%= search_result_path%>",
+        method: "POST",
+        data: { longitude : long,
+                latitude: lat,
+                radius: radius
+        },
+        dataType: "json"
+      }).done(function(data, status, opt){
+        alert(data);
+      });
+    }
 
 </script>
