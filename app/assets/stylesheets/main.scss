@@ -43,7 +43,7 @@ form {
   color: #fff;
 }
 
-.gmap_coordinate_picker_container {
+#map, .gmap_coordinate_picker_container {
   margin-bottom: 20px;
 }
 
@@ -78,8 +78,12 @@ form {
   margin-bottom: 20px;
 }
 
+.location-based {
+  margin-top: 82px;
+}
+
 @media screen and (max-width: 768px) {
-  #gallery {
+  #gallery, .location-based {
     margin-top: 20px;
   }
 }
