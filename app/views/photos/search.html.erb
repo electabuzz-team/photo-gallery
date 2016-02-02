@@ -1,7 +1,62 @@
 <%= form_tag(search_result_path, method: "POST") do %>
-  <%= render_gmap_coordinate_picker :zoom_level => 15, :default_coordinates => [10.780260, 106.698522]%>
+  <div style='width: 100%; margin-top: 82px;'>
+    <div id="map" style='width: 100%; height: 500px;'></div>
+  </div>
   <%= text_field_tag(:name) %>
   <div class="actions">
     <%= submit_tag "Search", class: 'btn btn-primary' %>
   </div>
+    <%= hidden_field_tag 'latitude'%>
+    <%= hidden_field_tag 'longitude'%>
+    <%= hidden_field_tag 'radius'%>
+
 <% end %>
+
+
+<script type="text/javascript">
+
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+
+    circle = handler.addCircle({'lat': 10.779131, 'lng': 106.697319, radius: 804.67200},{ strokeColor: '#3399ff', strokeOpacity: 1, fillColor: 'transparent', editable: true, event: "aaaaa" })
+    handler.circle = circle
+    handler.circle.getServiceObject().center_changed = function(event) {
+      update()
+    };
+    handler.circle.getServiceObject().radius_changed = function(event) {
+      update()
+    };
+    handler.bounds.extendWith(circle);
+    handler.fitMapToBounds()
+    update()
+
+//    real_markers.forEach(function(m, index){
+//      google.maps.event.addListener(m.getServiceObject(), 'click', function(object){
+//      });
+//    });
+    google.maps.event.addListener(handler.getMap(), 'click', function( event ){
+      if (handler.circle) {
+        handler.removeMarker(handler.circle)
+      }
+
+      circle = handler.addCircle({'lng': event.latLng.lng(), 'lat': event.latLng.lat(), radius: 804.67200},{ strokeColor: '#3399ff', strokeOpacity: 1, fillColor: 'transparent', editable: true, event: "aaaaa" })
+      handler.circle = circle
+      handler.circle.getServiceObject().center_changed = function(event) {
+        update()
+      };
+      handler.circle.getServiceObject().radius_changed = function(event) {
+        update()
+      };
+      handler.bounds.extendWith(circle);
+      handler.fitMapToBounds()
+      update()
+    });
+  });
+
+  function update() {
+    $('#latitude').val(handler.circle.getServiceObject().center.lat());
+    $('#longitude').val(handler.circle.getServiceObject().center.lng());
+    $('#radius').val(handler.circle.getServiceObject().radius);
+  };
+
+</script>

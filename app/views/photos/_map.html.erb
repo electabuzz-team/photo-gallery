@@ -77,7 +77,7 @@
 
     function search_photo(lat, long, radius) {
       $.ajax({
-        url: "<%= search_result_path%>",
+        url: "<%= search_result_json_path%>",
         method: "POST",
         data: { longitude : long,
                 latitude: lat,
