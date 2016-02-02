@@ -26,8 +26,12 @@
     handler.circle.getServiceObject().radius_changed = function(event) {
       update()
     };
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(handler.map.centerOn(circle));
+    }
     handler.bounds.extendWith(circle);
     handler.fitMapToBounds()
+    handler.getMap().setZoom(15);
     update()
 
 //    real_markers.forEach(function(m, index){
