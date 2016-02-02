@@ -19,12 +19,15 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, class: 'form-control', rows: '4' %>
   </div>
-  <div class="form-group">
-    <%= f.check_box :published %><%= f.label :published %>
-  </div>
-  <div class="form-group">
-    <%= f.file_field :photo %>
-  </div>
+  <% unless @photo.new_record? %>
+    <div class="form-group">
+      <%= f.check_box :published %><%= f.label :published %>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= f.file_field :photo %>
+    </div>
+  <% end %>
   <%= f.gmap_coordinate_picker :zoom_level => 15, :default_coordinates => [10.780260, 106.698522]%>
 
   <div class="actions">

@@ -5,8 +5,10 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @map = params[:map] || false
-    @photos = Photo.where(published: true)
+    @map = params[:map]
+    cond = { published: true }
+    cond.merge!({ published: false, user_id: params[:user] }) if params[:user]
+    @photos = Photo.where(cond)
   end
 
   def search
@@ -38,6 +40,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
+    @photo = Photo.find(params[:id])
   end
 
   # POST /photos
