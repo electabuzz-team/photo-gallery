@@ -30,14 +30,14 @@
 
   initGallery();
 
-  markers = []
+  markers = [];
   <% @photos.each do |photo| %>
   markers.push({
     "id": <%= photo.id%>,
     "lat": <%= photo.latitude%>,
     "lng": <%= photo.longitude%>,
     "picture": {
-      "url": "<%= Photo.find_by_name('wwww').photo.url(:thumb)%>",
+      "url": "<%= image_url('icon/camera_thumb.png') %>",
       "width":  20,
       "height": 20
     },
@@ -50,10 +50,6 @@
     handler.bounds.extendWith(real_markers);
     handler.fitMapToBounds();
 
-//    real_markers.forEach(function(m, index){
-//      google.maps.event.addListener(m.getServiceObject(), 'click', function(object){
-//      });
-//    });
     google.maps.event.addListener(handler.getMap(), 'click', function( event ){
       if (handler.circle) {
         handler.removeMarker(handler.circle)
