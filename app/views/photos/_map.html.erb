@@ -1,38 +1,43 @@
-<div style='width: 100%; margin-top: 82px;'>
-  <div id="map" style='width: 100%; height: 400px;'></div>
-</div>
 <div class="container">
-  <div id="map_gallery" style="display: none;">
+  <div id="map" style='width: 100%; height: 400px; margin-bottom: 6px;'></div>
+  <div id="map_gallery" style="display: none; margin-bottom: 20px;">
     <% @photos.each do |photo| %>
         <a href="<%= photo_path(photo) %>">
-          <img alt="<%= photo.name %>" src="<%= photo.photo.url(:thumb) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
+          <img alt="<%= photo.name %>" src="<%= photo.photo.url(:medium) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
         </a>
     <% end %>
   </div>
+</div>
+<div class="loading">
+  <div class="icon"></div>
 </div>
 
 
 <script type="text/javascript">
   // Initialize gallery
-  $('#map_gallery').unitegallery({
-    gallery_theme: 'tiles',
-    tiles_type: 'nested',
-    tile_show_link_icon: true,
-    tile_link_newpage: false,
-    tiles_nested_optimal_tile_width: 400,
-    tiles_space_between_cols: 6,
-    tiles_space_between_cols_mobile: 6,
-    tiles_min_columns: 1
-  });
+  function initGallery() {
+    $('#map_gallery').unitegallery({
+      gallery_theme: 'tiles',
+      tiles_type: 'nested',
+      tile_show_link_icon: true,
+      tile_link_newpage: false,
+      tiles_nested_optimal_tile_width: 400,
+      tiles_space_between_cols: 6,
+      tiles_space_between_cols_mobile: 6,
+      tiles_min_columns: 1
+    });
+  }
 
-  markers = []
+  initGallery();
+
+  markers = [];
   <% @photos.each do |photo| %>
   markers.push({
     "id": <%= photo.id%>,
     "lat": <%= photo.latitude%>,
     "lng": <%= photo.longitude%>,
     "picture": {
-      "url": "<%= Photo.find_by_name('wwww').photo.url(:thumb)%>",
+      "url": "<%= image_url('icon/camera_thumb.png') %>",
       "width":  20,
       "height": 20
     },
@@ -43,25 +48,59 @@
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     real_markers = handler.addMarkers(markers);
     handler.bounds.extendWith(real_markers);
-
     handler.fitMapToBounds();
 
-    real_markers.forEach(function(m, index){
-      google.maps.event.addListener(m.getServiceObject(), 'click', function(object){
-      });
-
-
-    });
     google.maps.event.addListener(handler.getMap(), 'click', function( event ){
       if (handler.circle) {
         handler.removeMarker(handler.circle)
       }
 
-      circle = handler.addCircle({'lng': event.latLng.lng(), 'lat': event.latLng.lat(), radius: 804.67200},{ strokeColor: '#3399ff', strokeOpacity: 1, fillColor: 'transparent', draggable: true })
+      circle = handler.addCircle({'lng': event.latLng.lng(), 'lat': event.latLng.lat(), radius: 804.67200},{ strokeColor: '#3399ff', strokeOpacity: 1, fillColor: 'transparent', editable: true, event: "aaaaa" })
       handler.circle = circle
+      handler.circle.getServiceObject().center_changed = function(event) {
+        search()
+      };
+      handler.circle.getServiceObject().radius_changed = function(event) {
+        search()
+      };
       handler.bounds.extendWith(circle);
       handler.fitMapToBounds()
+      search()
     });
   });
+
+    function search() {
+      lat = handler.circle.getServiceObject().center.lat();
+      lng = handler.circle.getServiceObject().center.lng();
+      radius = handler.circle.getServiceObject().radius;
+      search_photo(lat, lng, radius);
+    };
+
+    function search_photo(lat, long, radius) {
+      $('.loading').show();
+      $.ajax({
+        url: "<%= search_result_path %>",
+        method: "POST",
+        data: { longitude : long,
+                latitude: lat,
+                radius: radius
+        },
+        dataType: "json"
+      }).done(function(photos, status, opt) {
+        $('#map_gallery').empty();
+        photos.forEach(function (photo) {
+          var photoHtml = '<a href="/photos/' + photo.id + '">' +
+            '<img alt="' + photo.name + '" src="' + photo.medium_photo_url + '" data-image="' + photo.photo_url + '" data-description="' + photo.description + '" style="display: none" />' +
+          '</a>';
+
+          $('#map_gallery').append($(photoHtml));
+        });
+
+        initGallery();
+
+      }).always(function () {
+        $('.loading').hide();
+      });
+    }
 
 </script>
