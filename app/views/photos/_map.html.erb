@@ -1,8 +1,6 @@
-<div style='width: 100%; margin-top: 82px;'>
-  <div id="map" style='width: 100%; height: 400px;'></div>
-</div>
 <div class="container">
-  <div id="map_gallery" style="display: none;">
+  <div id="map" style='width: 100%; height: 400px; margin-bottom: 6px;'></div>
+  <div id="map_gallery" style="display: none; margin-bottom: 20px;">
     <% @photos.each do |photo| %>
         <a href="<%= photo_path(photo) %>">
           <img alt="<%= photo.name %>" src="<%= photo.photo.url(:thumb) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
@@ -10,20 +8,27 @@
     <% end %>
   </div>
 </div>
+<div class="loading">
+  <div class="icon"></div>
+</div>
 
 
 <script type="text/javascript">
   // Initialize gallery
-  $('#map_gallery').unitegallery({
-    gallery_theme: 'tiles',
-    tiles_type: 'nested',
-    tile_show_link_icon: true,
-    tile_link_newpage: false,
-    tiles_nested_optimal_tile_width: 400,
-    tiles_space_between_cols: 6,
-    tiles_space_between_cols_mobile: 6,
-    tiles_min_columns: 1
-  });
+  function initGallery() {
+    $('#map_gallery').unitegallery({
+      gallery_theme: 'tiles',
+      tiles_type: 'nested',
+      tile_show_link_icon: true,
+      tile_link_newpage: false,
+      tiles_nested_optimal_tile_width: 400,
+      tiles_space_between_cols: 6,
+      tiles_space_between_cols_mobile: 6,
+      tiles_min_columns: 1
+    });
+  }
+
+  initGallery();
 
   markers = []
   <% @photos.each do |photo| %>
@@ -77,15 +82,27 @@
 
     function search_photo(lat, long, radius) {
       $.ajax({
-        url: "<%= search_result_json_path%>",
+        url: "<%= search_result_path%>",
         method: "POST",
         data: { longitude : long,
                 latitude: lat,
                 radius: radius
         },
         dataType: "json"
-      }).done(function(data, status, opt){
-        alert(data);
+      }).done(function(photos, status, opt) {
+        $('#map_gallery').empty();
+        photos.forEach(function (photo) {
+          var photoHtml = '<a href="/photos/' + photo.id + '">' +
+            '<img alt="' + photo.name + '" src="' + photo.medium_photo_url + '" data-image="' + photo.photo_url + '" data-description="' + photo.description + '" style="display: none" />' +
+          '</a>';
+
+          $('#map_gallery').append($(photoHtml));
+        });
+
+        initGallery();
+
+      }).always(function () {
+        $('.loading').hide();
       });
     }
 
