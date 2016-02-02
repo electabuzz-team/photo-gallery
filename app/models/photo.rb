@@ -5,6 +5,7 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   acts_as_mappable :lat_column_name => :latitude,
                    :lng_column_name => :longitude
+  belongs_to :user
 
   def as_json(options)
     super((options || {}).merge({:methods => [:photo_url, :medium_photo_url, :thumb_photo_url]}))
@@ -21,4 +22,5 @@ class Photo < ActiveRecord::Base
   def thumb_photo_url
     self.photo.url(:thumb)
   end
+
 end
