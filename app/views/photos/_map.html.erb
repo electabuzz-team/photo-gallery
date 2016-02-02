@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" style="margin-top: 82px">
   <div id="map" style='width: 100%; height: 400px; margin-bottom: 6px;'></div>
   <div id="map_gallery" style="display: none; margin-bottom: 20px;">
     <% @photos.each do |photo| %>
         <a href="<%= photo_path(photo) %>">
-          <img alt="<%= photo.name %>" src="<%= photo.photo.url(:medium) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
+          <img alt="<%= photo.name %>" src="<%= photo.photo.url(:thumb) %>" data-image="<%= photo.photo.url %>" data-description="<%= photo.description %>" style="display: none" />
         </a>
     <% end %>
   </div>
@@ -77,9 +77,9 @@
     };
 
     function search_photo(lat, long, radius) {
-      $('.loading').show();
+      $('.loading').hide();
       $.ajax({
-        url: "<%= search_result_path %>",
+        url: "<%= search_result_json_path%>",
         method: "POST",
         data: { longitude : long,
                 latitude: lat,
@@ -97,7 +97,6 @@
         });
 
         initGallery();
-
       }).always(function () {
         $('.loading').hide();
       });

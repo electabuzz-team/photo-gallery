@@ -14,6 +14,7 @@
       <ul class="nav navbar-nav">
 
         <li class="menuItem"><a href="<%= new_photo_path %>">Upload</a></li>
+        <li class="menuItem"><a href="<%= photos_path %>">Gallery</a></li>
         <li class="menuItem"><a href="<%= photos_path(map: true) %>">Discovery</a></li>
         <% if user_signed_in? %>
           <li class="menuItem"><%= link_to 'Review', photos_path(map: false, user: current_user.id) %></li>
